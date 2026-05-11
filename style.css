@@ -164,11 +164,45 @@ body { background-color: var(--black); color: #fff; font-family: 'Montserrat', s
 
 @media (max-width: 768px) {
     .hero-title { font-size: 3.2rem; }
-    .gallery-wrap { height: auto; perspective: none; }
-    .card-stack { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; transform: none; }
-    .g-card { position: relative !important; width: 100% !important; height: 200px !important; transform: none !important; z-index: 10 !important; }
-    .gc3 { grid-column: span 2; height: 260px !important; }
-    .btn-wrap { flex-direction: column; align-items: center; }
+    
+    /* Gallery Mobile Adjustment - Pura fix kora hoyeche */
+    .gallery-wrap { 
+        height: auto !important; 
+        perspective: none; 
+        padding: 20px 0;
+    }
+    
+    .card-stack { 
+        width: 100%; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 20px; 
+        transform: none; 
+        align-items: center;
+    }
+    
+    .g-card { 
+        position: relative !important; 
+        width: 90% !important; 
+        height: 350px !important; 
+        transform: none !important; 
+        z-index: 10 !important; 
+        left: 0 !important;
+        margin: 0 auto;
+    }
+    
+    /* Shob chobi jate kete na jay tai height stable kora holo */
+    .gc1, .gc2, .gc3, .gc4, .gc5 { 
+        height: 350px !important; 
+    }
+
+    .btn-wrap { 
+        flex-direction: column; 
+        align-items: center; 
+        height: auto !important; /* Button gulo jate ektar upor arekta na uthe */
+        gap: 15px;
+    }
+
     #no-btn { position: relative !important; left: 0 !important; top: 0 !important; }
     .book-page { height: 600px; }
 }
