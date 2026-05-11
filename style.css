@@ -1,0 +1,174 @@
+:root { --accent: #ff3366; --purple: #1a002e; --paper: #fdfaf7; --black: #050505; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--black); color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+
+.global-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0a000a, #1a002e, #2d0000); z-index: -10; }
+#tulip-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
+.falling-tulip { position: absolute; font-size: 20px; animation: fall linear forwards; opacity: 0.7; }
+@keyframes fall { 0% { transform: translateY(-10vh); } 100% { transform: translateY(110vh); } }
+
+.hero-section {
+    width: 100%;
+    height: 100vh; /* 75vh theke 100vh korle image purp screen jure dekhabe */
+    background-image: url('pics/img6.jpeg');
+    background-repeat: no-repeat;
+    
+    /* Image jate boro dekhay kintu kete na jay */
+    background-size: cover; 
+    
+    /* Upore-niche ebong bame-daane soraite eita adjust koro */
+    background-position: 50% 25%; 
+    
+    position: relative;
+}
+
+.hero-overlay { position: absolute; bottom: 0; width: 100%; height: 60%; background: linear-gradient(to top, var(--black) 15%, transparent); z-index: 5; }
+.name-header { position: absolute; top: 40px; width: 100%; text-align: center; z-index: 10; }
+.hero-title { font-family: 'Dancing Script', cursive; font-size: 4.5rem; color: var(--accent); }
+
+.timer-section { width: 100%; padding: 60px 20px; text-align: center; position: relative; z-index: 15; background: var(--black); }
+.timer-bar { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 51, 102, 0.3); backdrop-filter: blur(15px); padding: 12px 35px; border-radius: 50px; display: inline-flex; gap: 25px; }
+.timer-unit { font-family: 'Playfair Display'; font-size: 1.5rem; display: flex; flex-direction: column; line-height: 1; }
+.timer-unit small { font-size: 8px; text-transform: uppercase; color: var(--accent); margin-top: 5px; }
+
+/* GALLERY FIXED (ANTI-SHAKING) */
+.gallery-section { padding: 40px 20px; background: var(--black); text-align: center; }
+.gallery-wrap { width: 100%; height: 450px; display: flex; justify-content: center; align-items: center; perspective: 2000px; }
+.card-stack { position: relative; width: 220px; height: 320px; transform-style: preserve-3d; }
+.g-card { 
+    position: absolute; width: 220px; height: 320px; border-radius: 20px; border: 2px solid var(--accent); 
+    overflow: hidden; cursor: pointer; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); 
+    background: #000; backface-visibility: hidden; will-change: transform; 
+}
+.g-card img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+
+.gc1 { transform: translateX(-340px) rotateY(35deg) scale(0.85); --tx: -340px; --ry: 35deg; --sc: 0.85; }
+.gc2 { transform: translateX(-170px) rotateY(20deg) scale(0.95); --tx: -170px; --ry: 20deg; --sc: 0.95; }
+.gc3 { transform: translateX(0) rotateY(0deg) scale(1.1); z-index: 20; --tx: 0px; --ry: 0deg; --sc: 1.1; }
+.gc4 { transform: translateX(170px) rotateY(-20deg) scale(0.95); --tx: 170px; --ry: -20deg; --sc: 0.95; }
+.gc5 { transform: translateX(340px) rotateY(-35deg) scale(0.85); --tx: 340px; --ry: -35deg; --sc: 0.85; }
+
+.g-card:hover { 
+    transform: translateX(var(--tx)) rotateY(var(--ry)) translateY(-40px) scale(calc(var(--sc) + 0.15)) !important; 
+    z-index: 100 !important; border-color: #fff; box-shadow: 0 15px 35px var(--accent); 
+}
+
+.middle-purple-section { 
+    width: 100%; 
+    min-height: 110vh; 
+    background-image: url('pics/img7.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    /* background-position: [Baame-Daane %] [Upore-Niche %] */
+    /* Eikhane percentage change kore manually adjust koro */
+    background-position: 50% 45%; 
+
+    position: relative; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 100px 20px; 
+}
+
+.middle-purple-section::before { 
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: linear-gradient(to bottom, var(--black), rgba(26, 0, 46, 0.8), var(--black)); 
+    z-index: 1; 
+}
+
+
+.music-bar { width: 90%; max-width: 450px; background: rgba(0,0,0,0.85); border-radius: 100px; display: flex; align-items: center; padding: 8px 15px; gap: 15px; border: 1px solid var(--accent); cursor: pointer; position: relative; z-index: 10; margin-bottom: 60px; backdrop-filter: blur(10px); }
+.music-thumb { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+
+/* SLIM BUTTONS FIX */
+.proposal-box { background: rgba(255,255,255,0.04); padding: 45px 25px; border-radius: 40px; border: 1.5px solid var(--accent); width: 100%; max-width: 500px; text-align: center; position: relative; z-index: 10; backdrop-filter: blur(10px); min-height: 250px; }
+.btn-wrap { display: flex; gap: 20px; justify-content: center; margin-top: 35px; width: 100%; position: relative; height: 100px; }
+
+/* --- PROPOSAL AREA BUTTONS FIXED --- */
+/* --- BUTTON SLIM & STABLE FIX --- */
+/* --- ULTIMATE BUTTON FIX --- */
+.btn { 
+    /* Padding komiye slim kora holo */
+    padding: 8px 22px !important; 
+    
+    /* Fixed width shoriye auto kora holo jate gol na hoye jay */
+    width: auto !important;
+    min-width: 120px; /* Ektu width jate thake */
+    height: auto !important;
+    
+    border-radius: 50px !important; 
+    cursor: pointer; 
+    font-weight: 600; 
+    border: none; 
+    font-family: 'Montserrat'; 
+    font-size: 0.85rem; 
+    
+    /* Transition bondho jate click-e jump na kore */
+    transition: none !important; 
+    
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Click-e jate size change na hoy */
+.btn:active, .btn:focus {
+    transform: scale(1) !important; 
+    outline: none !important;      
+    box-shadow: 0 0 15px var(--accent) !important; /* Sudhu glow thakbe */
+}
+
+/* Yes Button specific */
+.btn-yes {
+    background-color: var(--accent) !important;
+    color: white !important;
+    box-shadow: 0 0 15px var(--accent);
+}
+
+/* Maybe Button specific */
+#no-btn {
+    background: transparent !important;
+    border: 1px solid white !important;
+    color: white !important;
+}
+
+.btn-yes { background: var(--accent); color: white; box-shadow: 0 0 15px var(--accent); }
+#no-btn { background: transparent; border: 1px solid white; color: white; position: relative; }
+
+/* BOOK MODAL */
+#book-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 30000; justify-content: center; align-items: center; padding: 20px; }
+.book-container { width: 100%; max-width: 500px; display: flex; flex-direction: column; }
+.book-page { background: var(--paper); color: #333; padding: 40px; border-radius: 12px; display: none; flex-direction: column; text-align: center; height: 550px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); overflow: hidden; }
+.book-page.active { display: flex; }
+.book-page img { width: 100%; height: 260px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; flex-shrink: 0; }
+.typewriter-text {
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-height: 250px; /* Message boro hole eikhane scroll hobe */
+    overflow-y: auto;
+    padding-right: 10px;
+}
+/* OVERLAY */
+#img-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 10000; display: none; justify-content: center; align-items: center; }
+.overlay-content { display: flex; width: 90%; max-width: 900px; height: 80vh; background: #000; border-radius: 30px; overflow: hidden; border: 1px solid var(--accent); }
+.right-paper { flex: 1; background: #fff; color: #222; padding: 40px; display: flex; flex-direction: column; justify-content: center; line-height: 2.3rem; }
+
+@media (max-width: 768px) {
+    .hero-title { font-size: 3.2rem; }
+    .gallery-wrap { height: auto; perspective: none; }
+    .card-stack { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; transform: none; }
+    .g-card { position: relative !important; width: 100% !important; height: 200px !important; transform: none !important; z-index: 10 !important; }
+    .gc3 { grid-column: span 2; height: 260px !important; }
+    .btn-wrap { flex-direction: column; align-items: center; }
+    #no-btn { position: relative !important; left: 0 !important; top: 0 !important; }
+    .book-page { height: 600px; }
+}

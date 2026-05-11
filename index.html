@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Kashshaf | Eternal Revelation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&family=Satisfy&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="global-bg"></div>
+    <div id="tulip-container"></div>
+    <audio id="bg-music" src="Khat.mp3" loop preload="auto"></audio>
+
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="name-header"><h1 class="hero-title">Kashshaf</h1></div>
+    </div>
+
+    <div class="timer-section">
+        <div class="timer-bar">
+            <div class="timer-unit"><span id="d">00</span><small>Days</small></div>
+            <div class="timer-unit"><span id="h">00</span><small>Hrs</small></div>
+            <div class="timer-unit"><span id="m">00</span><small>Mins</small></div>
+            <div class="timer-unit"><span id="s">00</span><small>Secs</small></div>
+        </div>
+        <p style="font-size: 0.85rem; font-style: italic; color: #ffb7c5; margin-top: 20px; letter-spacing: 1px;">Jan 26 eye-contact, March 26 first meet. Destiny loves 26.</p>
+    </div>
+
+    <section class="gallery-section">
+        <h2 style="font-family: 'Dancing Script'; font-size: 3rem; margin-bottom: 30px; color: var(--accent);">Gallery of My Love</h2>
+        <div class="gallery-wrap">
+            <div class="card-stack">
+                <div class="g-card gc1" onclick="openOverlay(this, 'Beginning', 'Jan 26. My soul finally recognized someone.')"><img src="pics/img1.jpg"></div>
+                <div class="g-card gc2" onclick="openOverlay(this, 'Grace', 'You carry kindness in your heart.')"><img src="pics/img1.jpeg"></div>
+                <div class="g-card gc3" onclick="openOverlay(this, 'Main', 'I can spend a thousand years with you.')"><img src="pics/im3.jpg"></div>
+                <div class="g-card gc4" onclick="openOverlay(this, 'Soft Vibe', 'Everything feels beautiful with you.')"><img src="pics/im4.jpg"></div>
+                <div class="g-card gc5" onclick="openOverlay(this, 'Destiny', 'You deserve the entire universe.')"><img src="pics/im5.jpeg"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="middle-purple-section">
+        <div class="music-bar" onclick="toggleMusic()">
+            <div class="music-thumb"><img src="pics/img1.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div style="text-align: left;">
+                <h4 id="music-status" style="font-size: 0.95rem; color: #fff;">Khat (Tap to Play)</h4>
+                <p style="color: var(--accent); font-size: 0.75rem; font-weight: 600;">Navjot Ahuja</p>
+            </div>
+        </div>
+
+        <div class="proposal-box" id="prop-box">
+            <h2 style="font-family: 'Satisfy'; font-size: 2.2rem; margin-bottom: 10px; color: #fff;">Be My Final Love?</h2>
+            <div class="btn-wrap">
+                <button class="btn btn-yes" onclick="startLoveBook()">Yes, I Stay</button>
+                <button class="btn" id="no-btn" onclick="handleNoClick()" onmouseover="handleNoHover()">Maybe...</button>
+            </div>
+        </div>
+    </div>
+
+<div id="book-modal">
+    <div class="book-container">
+        <div class="book-page active" id="p1">
+            <h2 style="font-family: 'Satisfy'; color: var(--accent); margin-bottom: 20px; font-size: 2rem;">Dearest Kashshaf,</h2>
+            <div id="auto-text-p1" class="typewriter-text"></div>
+            <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #ddd; padding-top: 15px;">
+                <span style="font-family: 'Dancing Script'; font-size: 1.5rem; color: var(--accent);">— Oyon</span>
+                <button class="btn btn-yes" id="btn-p1" onclick="nextPage(2)" style="display:none; padding: 8px 15px;">Memories →</button>
+            </div>
+        </div>
+
+        <div class="book-page" id="p2">
+            <img src="pics/img8.jpg">
+            <h3 style="font-family: 'Satisfy'; margin-bottom: 10px; font-size: 1.6rem;">Our Moments</h3>
+            <div id="auto-text-p2" class="typewriter-text"></div>
+            <div style="margin-top: auto; display: flex; justify-content: space-between;">
+                <button class="btn btn-yes" id="btn-p2" onclick="nextPage(3)" style="display:none; padding: 8px 20px;">My Promises →</button>
+            </div>
+        </div>
+
+        <div class="book-page" id="p3">
+            <img src="pics/im4.jpg">
+            <h3 style="font-family: 'Satisfy'; color: var(--accent); font-size: 1.6rem;">My Vow to You</h3>
+            <div id="auto-text-p3" class="typewriter-text"></div>
+            <div style="margin-top: auto; display: flex; justify-content: space-between;">
+                <button class="btn btn-yes" id="btn-p3" onclick="nextPage(4)" style="display:none; padding: 8px 20px;">What I Ask... →</button>
+            </div>
+        </div>
+
+        <div class="book-page" id="p4">
+            <h3 style="font-family: 'Satisfy'; margin-bottom: 20px; font-size: 1.8rem; color: var(--accent);">Only Two Things...</h3>
+            <div id="auto-text-p4" class="typewriter-text"></div>
+            <div style="margin-top: auto;">
+                <button class="btn btn-yes" id="btn-p4" onclick="nextPage(5)" style="display:none; width: 100%; padding: 10px;">The Final Word ❤️</button>
+            </div>
+        </div>
+
+        <div class="book-page" id="p5">
+            <img src="pics/img8.jpg">
+            <h3 style="font-family: 'Satisfy'; color: var(--accent); font-size: 1.6rem;">Forever & Always</h3>
+            <div id="auto-text-p5" class="typewriter-text"></div>
+            <button class="btn btn-yes" onclick="location.reload()" style="margin-top: auto; width: 100%; padding: 10px;">Forever ❤️</button>
+        </div>
+    </div>
+</div>
+
+    <div id="img-overlay">
+        <span onclick="closeOverlay()" style="position:absolute; top:20px; right:35px; font-size:50px; cursor:pointer; color:var(--accent);">×</span>
+        <div class="overlay-content">
+            <div class="left-image" style="flex: 1.2;"><img id="overlay-img" src="" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="right-paper">
+                <h2 id="paper-title" style="font-family: 'Satisfy'; color: var(--accent);"></h2>
+                <p id="paper-text" style="color: #333;"></p>
+                <p style="margin-top: 25px; font-family: 'Satisfy'; font-size: 1.2rem; color: var(--accent);">With All My Love.</p>
+            </div>
+        </div>
+    </div>
+
+ <script>
+    // Essential Elements
+    const music = document.getElementById('bg-music');
+    const musicStatus = document.getElementById('music-status');
+    
+    // Fixed Content Object (Quotes added to prevent error)
+    const content = {
+        p1: "Kashshaf, you came into my life so quietly, yet somehow became the loudest feeling in my heart. After such a long time, you're the first person who made me feel love this deeply again. 🤍 At first, I only admired you… but slowly your smile, your voice, and even your little habits started staying in my mind longer than they should. What I feel for you is not temporary; it's soft, real, loyal, and pure. I don't just want your attention—I want your peace, your trust, and your heart. 💫 I love you more than words could ever explain. 🤍",
+        p2: "Our journey together is filled with these little moments that mean the world to me. Every time we meet or talk, it feels like destiny was working to bring us closer. These are the memories I want to hold onto forever. ✨",
+        p3: "I promise to love you endlessly, to value every word you say, and to listen to you with all my heart. I will trust you blindly and stand by you through every storm. I want to build a world where you feel safe, respected, and deeply cherished. 💍",
+        p4: "In return, I don't ask for the world. I only ask for your true love and your loyalty. If I have those from you, I have everything I'll ever need. I promise you'll never have to question how deeply you are loved. 🤍",
+        p5: "Maybe we weren't each other's first love, but I hope with all my soul that we can be each other's last. If you choose me, I'll spend every day proving that you made the right choice. Forever and always yours. ❤️"
+    };
+
+    // Timer Logic
+    function updateTimer() {
+        const start = new Date("January 26, 2026 00:00:00").getTime();
+        const diff = new Date().getTime() - start;
+        const d = document.getElementById("d");
+        const h = document.getElementById("h");
+        const m = document.getElementById("m");
+        const s = document.getElementById("s");
+        
+        if (d && h && m && s) {
+            d.innerText = Math.floor(diff / 86400000).toString().padStart(2,'0');
+            h.innerText = Math.floor((diff % 86400000) / 3600000).toString().padStart(2,'0');
+            m.innerText = Math.floor((diff % 3600000) / 60000).toString().padStart(2,'0');
+            s.innerText = Math.floor((diff % 60000) / 1000).toString().padStart(2,'0');
+        }
+    }
+    setInterval(updateTimer, 1000);
+
+    // Music Control
+    function toggleMusic() {
+        if (music.paused) { 
+            music.play(); 
+            musicStatus.innerText = "Playing: Khat 🎵"; 
+        } else { 
+            music.pause(); 
+            musicStatus.innerText = "Paused: Khat"; 
+        }
+    }
+
+    // Auto-typing Logic
+    function typeEffect(elementId, text, btnId) {
+        let i = 0; 
+        const target = document.getElementById(elementId); 
+        if (!target) return;
+        target.innerHTML = ""; 
+        function type() {
+            if (i < text.length) {
+                target.innerHTML += text.charAt(i);
+                i++;
+                target.scrollTop = target.scrollHeight; 
+                setTimeout(type, 35);
+            } else if (btnId) {
+                const btn = document.getElementById(btnId);
+                if (btn) btn.style.display = 'block';
+            }
+        }
+        type();
+    }
+
+    // Love Book Logic
+    function startLoveBook() {
+        confetti({ particleCount: 300, spread: 160, origin: { y: 0.6 } });
+        document.getElementById('book-modal').style.display = 'flex';
+        typeEffect('auto-text-p1', content.p1, 'btn-p1');
+    }
+
+    function nextPage(pageNo) {
+        document.querySelectorAll('.book-page').forEach(p => p.classList.remove('active'));
+        const targetPage = document.getElementById('p' + pageNo);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            typeEffect('auto-text-p' + pageNo, content['p' + pageNo], 'btn-p' + pageNo);
+        }
+    }
+
+    // Dodge Button Logic (Improved from script.js)
+    function handleNoHover() {
+        if (window.innerWidth > 768) {
+            const btn = document.getElementById('no-btn');
+            const box = document.getElementById('prop-box');
+            if (btn && box) {
+                const rect = box.getBoundingClientRect();
+                btn.style.position = 'absolute';
+                btn.style.left = Math.random() * (rect.width - 100) + 'px';
+                btn.style.top = Math.random() * (rect.height - 50) + 'px';
+            }
+        }
+    }
+
+    function handleNoClick() { alert('Are you sure? 🧐'); }
+
+    // Gallery & Tulips
+    function openOverlay(card, title, text) {
+        document.getElementById('overlay-img').src = card.querySelector('img').src;
+        document.getElementById('paper-title').innerText = title;
+        document.getElementById('paper-text').innerText = text;
+        document.getElementById('img-overlay').style.display = 'flex';
+    }
+    function closeOverlay() { document.getElementById('img-overlay').style.display = 'none'; }
+
+    setInterval(() => {
+        const t = document.createElement('div'); 
+        t.className = 'falling-tulip'; 
+        t.innerText = '🌷';
+        t.style.left = Math.random() * 100 + "vw"; 
+        t.style.animationDuration = (Math.random() * 3 + 5) + "s";
+        const container = document.getElementById('tulip-container');
+        if (container) container.appendChild(t);
+        setTimeout(() => t.remove(), 8000);
+    }, 600);
+
+    window.onload = () => {
+        updateTimer();
+        document.body.addEventListener('click', () => {
+            if (music.paused && music.currentTime === 0) music.play().then(() => music.pause());
+        }, { once: true });
+    };
+</script>
+</body>
+</html>
