@@ -82,9 +82,11 @@ img { max-width: 100%; }
     padding: 100px 20px;
     margin-top: -1px;
 }
-/* fixed backgrounds are janky / unsupported on phones, so only use on desktop-class devices */
-@media (hover: hover) and (min-width: 769px) {
-    .middle-purple-section { background-attachment: fixed; }
+/* parallax: background stays fixed while the page scrolls over it (same as your original) */
+.middle-purple-section { background-attachment: fixed; }
+/* iPhone/iPad Safari ignores 'fixed' and renders the image blown-up, so only they fall back to normal scrolling */
+@supports (-webkit-touch-callout: none) {
+    .middle-purple-section { background-attachment: scroll; }
 }
 .middle-purple-section::before {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
